@@ -1,0 +1,134 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>BORO WASH NYC</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EEF0F3;--card:#fff;--tx:#0B2545;--mut:#5d6b7d;--line:#d8dde4;--navy:#0B2545;--y:#FFC400;--ok:#1f9d55;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#08111f;--card:#10203a;--tx:#f1f4f8;--mut:#9aa8bb;--line:#223452;color-scheme:dark}}
+*{box-sizing:border-box}html,body{height:100%;margin:0}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:var(--bg);color:var(--tx);font:500 15px/1.4 Archivo,Helvetica,Arial,sans-serif}
+h1,h2,h3{margin:0;font-weight:900;letter-spacing:-.02em}h2{font-size:20px}h3{font-size:16px}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--navy);display:flex;gap:6px;padding:8px;overflow-x:auto}
+.top button{flex:1;min-width:max-content;border:0;border-radius:99px;padding:8px 12px;font:800 13px Archivo,sans-serif;background:#1b3a63;color:#fff;cursor:pointer}
+.top button.on{background:var(--y);color:#0B2545}
+.wrap{max-width:440px;margin:0 auto;padding:14px 14px 96px}.wrap.wide{max-width:1000px;padding-bottom:30px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin:0 0 12px}
+.btn{display:block;width:100%;border:0;border-radius:12px;padding:15px;font:900 16px Archivo,sans-serif;background:var(--navy);color:#fff;cursor:pointer;text-align:center;margin:8px 0}
+.btn.y{background:var(--y);color:#0B2545}.btn.o{background:transparent;color:var(--tx);border:2px solid var(--tx)}.btn.sm{display:inline-block;width:auto;padding:8px 12px;font-size:13px;margin:0}
+.btn:disabled{opacity:.4}
+.row{display:flex;gap:10px;align-items:center;justify-content:space-between}.g{display:grid;gap:8px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}
+.mut{color:var(--mut);font-size:13px}.big{font-size:26px;font-weight:900}
+.bul{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--y);color:#0B2545;font-weight:900;font-size:14px;flex:none}
+.bul.n{background:var(--navy);color:#fff}.bul.ok{background:var(--ok);color:#fff}
+.pill{display:inline-block;border-radius:99px;padding:3px 10px;font-size:12px;font-weight:800;background:var(--y);color:#0B2545}.pill.d{background:var(--ok);color:#fff}.pill.g{background:var(--line);color:var(--tx)}
+input,select,textarea{width:100%;padding:12px;border-radius:10px;border:1.5px solid var(--line);background:var(--card);color:var(--tx);font:500 15px Archivo,sans-serif}
+label{display:block;font-weight:800;font-size:13px;margin:10px 0 4px}
+.opt{border:2px solid var(--line);border-radius:12px;padding:12px;cursor:pointer;background:var(--card);color:var(--tx);text-align:left;font:inherit;width:100%}
+.opt.on{border-color:var(--y);background:rgba(255,196,0,.14)}.opt.off{opacity:.5}
+.nav{position:fixed;left:0;right:0;bottom:0;background:var(--navy);display:flex;justify-content:center;padding-bottom:env(safe-area-inset-bottom,0px);z-index:8}
+.nav div{display:flex;max-width:440px;width:100%}.nav button{flex:1;border:0;background:none;color:#aebbd0;padding:12px 4px;font:800 12px Archivo,sans-serif;cursor:pointer}.nav button.on{color:var(--y)}
+.hero{background:var(--navy);color:#fff;border-radius:18px;padding:22px;margin-bottom:12px;overflow:hidden}.hero h1{font-size:34px;line-height:1.02}
+.tl{list-style:none;margin:0;padding:0}.tl li{display:flex;gap:12px;padding:0 0 14px;position:relative}.tl li:not(:last-child):before{content:"";position:absolute;left:12px;top:26px;bottom:0;width:3px;background:var(--line)}.tl li.d:not(:last-child):before{background:var(--ok)}
+.tl .t{font-weight:800}.tl li.x .t{color:var(--mut);font-weight:500}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:84px;background:var(--y);color:#0B2545;font-weight:900;padding:12px 18px;border-radius:99px;z-index:20;box-shadow:0 4px 14px rgba(0,0,0,.3)}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line)}th{color:var(--mut)}.tw{overflow-x:auto}
+.tabs{display:flex;gap:6px;margin-bottom:12px;overflow-x:auto}
+.empty{text-align:center;color:var(--mut);padding:22px}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--y);outline-offset:2px}
+</style></head><body><div id="app"></div>
+<script>
+const ST=[`Pickup scheduled`,`Driver assigned`,`Laundry picked up`,`Arrived at laundromat`,`Washing & drying`,`Folding & packaging`,`Out for delivery`,`Delivered`];
+const NB=[`Bedford-Stuyvesant`,`Crown Heights`,`Flatbush`,`Bushwick`,`Park Slope`,`Prospect Heights`,`Downtown Brooklyn`,`Williamsburg`,`Fort Greene`,`Clinton Hill`];
+const SV={wdf:{n:`Wash, Dry & Fold`,u:`lb`,d:`Everyday clothes, towels, sheets`},del:{n:`Delicate Laundry`,u:`lb`,d:`Cold wash, air dry, hand folded`},bed:{n:`Bedding & Comforters`,u:`item`,d:`Comforters, duvets, king sheets`},dry:{n:`Dry Cleaning`,soon:1,d:`Coming soon`}};
+const DR=[{id:`d1`,n:`Marcus T.`,car:`White Transit, NY 4821`,ph:`(718) 555-0142`},{id:`d2`,n:`Aaliyah P.`,car:`Gray Sprinter, NY 7730`,ph:`(718) 555-0177`}];
+const LM=[{id:`l1`,n:`Franklin Ave Wash House`},{id:`l2`,n:`Nostrand Suds & Fold`}];
+const CU=[`Dani Rivera`,`Kofi Mensah`,`Priya Nair`,`Tomás Ortiz`,`Jess Whitfield`];
+const day=n=>{const d=new Date();d.setDate(d.getDate()+n);return d.toISOString().slice(0,10)};
+const fd=s=>new Date(s+`T12:00`).toLocaleDateString(`en-US`,{weekday:`short`,month:`short`,day:`numeric`});
+const m=x=>`$`+Number(x).toFixed(2);
+const seed=()=>({role:`customer`,tab:`home`,welcomed:0,sub:`overview`,tracked:`BW-1042`,pr:{wdf:1.85,del:2.5,bed:20},min:25,fee:4.99,areas:NB.slice(0,8),prof:{notif:1,plan:`None`},
+D:{svc:`wdf`,qty:15,nb:`Bedford-Stuyvesant`,addr:`412 Nostrand Ave`,apt:`3B`,date:day(1),win:`10 AM – 12 PM`,note:``,cl:0,promo:``,pok:0},
+orders:[
+{id:`BW-1042`,cust:`Dani Rivera`,svc:`wdf`,qty:14,addr:`412 Nostrand Ave 3B`,nb:`Bedford-Stuyvesant`,date:day(0),win:`8 – 10 AM`,total:30.89,status:4,drv:`d1`,lm:`l1`,ready:0,mine:1},
+{id:`BW-1039`,cust:`Dani Rivera`,svc:`bed`,qty:2,addr:`412 Nostrand Ave 3B`,nb:`Bedford-Stuyvesant`,date:day(-6),win:`12 – 2 PM`,total:44.99,status:7,drv:`d2`,lm:`l2`,ready:1,mine:1},
+{id:`BW-1031`,cust:`Dani Rivera`,svc:`del`,qty:9,addr:`412 Nostrand Ave 3B`,nb:`Bedford-Stuyvesant`,date:day(-13),win:`6 – 8 PM`,total:27.49,status:7,drv:`d1`,lm:`l1`,ready:1,mine:1},
+{id:`BW-1043`,cust:`Kofi Mensah`,svc:`wdf`,qty:20,addr:`88 Bergen St 2F`,nb:`Park Slope`,date:day(0),win:`10 AM – 12 PM`,total:41.99,status:1,drv:`d1`,lm:`l1`,ready:0},
+{id:`BW-1044`,cust:`Priya Nair`,svc:`wdf`,qty:12,addr:`210 Havemeyer St 5A`,nb:`Williamsburg`,date:day(0),win:`12 – 2 PM`,total:27.19,status:5,drv:`d2`,lm:`l2`,ready:0},
+{id:`BW-1045`,cust:`Tomás Ortiz`,svc:`del`,qty:8,addr:`1190 Bedford Ave 1R`,nb:`Crown Heights`,date:day(0),win:`6 – 8 PM`,total:25,status:5,drv:`d1`,lm:`l1`,ready:1}]});
+let S;try{S=JSON.parse(localStorage.getItem(`bw2`))}catch(e){}if(!S)S=seed();
+const save=()=>{try{localStorage.setItem(`bw2`,JSON.stringify(S))}catch(e){}};
+const O=id=>S.orders.find(o=>o.id===id);
+const price=D=>{let b=Math.max(S.min,S.pr[D.svc]*D.qty),disc=D.pok?b*.1:0;return{b,disc,fee:S.fee,t:b-disc+S.fee}};
+const toast=t=>{S.toast=t;render();setTimeout(()=>{S.toast=0;render()},1800)};
+const skyline=`<svg viewBox="0 0 360 90" width="100%" aria-hidden="true"><path fill="#1b3a63" d="M0 90V60h18V40h14v20h10V30h12v60h8V50h16V18l5-12 5 12v32h12V36h14v54h10V56h16V24h10l4-10 4 10h8v66h12V44h14v46h10V62h16V34h12v56h14V52h14v38z"/><path fill="#FFC400" d="M168 18l5-14 5 14z"/></svg>`;
+const bul=(l,c)=>`<span class="bul ${c||``}">${l}</span>`;
+const pill=o=>`<span class="pill ${o.status===7?`d`:``}">${ST[o.status]}</span>`;
+const svn=o=>`${SV[o.svc].n} · ${o.qty} ${SV[o.svc].u}${o.qty>1?`s`:``}`;
+function map(o){const P=[[40,150],[290,50],[70,140]];const pos=o.status<2?[40,40]:o.status===2?[285,58]:o.status<6?[70,140]:o.status===6?[180,95]:[290,50];
+return`<svg viewBox="0 0 360 190" width="100%" style="border-radius:12px;background:var(--bg)" role="img" aria-label="Map"><g stroke="var(--line)" stroke-width="7">${[0,1,2,3,4].map(i=>`<path d="M${i*90} 0V190"/>`).join(``)}${[0,1,2,3].map(i=>`<path d="M0 ${i*60}H360"/>`).join(``)}</g><path d="M70 140L180 95L290 50" stroke="#0B2545" stroke-width="4" stroke-dasharray="8 6" fill="none"/><circle cx="70" cy="140" r="9" fill="#0B2545"/><text x="70" y="168" font-size="10" text-anchor="middle" fill="var(--tx)">Laundromat</text><circle cx="290" cy="50" r="9" fill="#1f9d55"/><text x="290" y="32" font-size="10" text-anchor="middle" fill="var(--tx)">You</text><g transform="translate(${pos[0]} ${pos[1]})"><circle r="13" fill="#FFC400" stroke="#0B2545" stroke-width="3"/><text y="4" font-size="11" font-weight="900" text-anchor="middle" fill="#0B2545">D</text></g></svg>`}
+function tl(o){return`<ul class="tl">${ST.map((s,i)=>`<li class="${i<=o.status?`d`:`x`}">${bul(i<=o.status?`✓`:i+1,i<=o.status?`ok`:`n`)}<span class="t">${s}</span></li>`).join(``)}</ul>`}
+const ordCard=(o,btn)=>`<div class="card"><div class="row"><b>${o.id}</b>${pill(o)}</div><div class="mut">${svn(o)}<br>${o.addr}, ${o.nb}<br>${fd(o.date)}, ${o.win}</div><div class="row" style="margin-top:8px"><b>${m(o.total)}</b><span>${btn||``}</span></div></div>`;
+
+function welcome(){return`<div class="hero" style="padding-top:30px"><div class="row" style="justify-content:flex-start">${bul(`B`)}${bul(`W`,`n`)}<b style="font-size:20px;letter-spacing:.04em">BORO WASH NYC</b></div><h1 style="margin-top:30px">Brooklyn, We Got Your Laundry.</h1><p style="color:#c9d4e4">Pickup. Fresh wash. Right back to your door.</p>${skyline}</div><button class="btn y" data-a="start">Get Started</button><button class="btn o" data-a="start">Sign In</button>`}
+function home(){const act=S.orders.find(o=>o.mine&&o.status<7),prev=S.orders.filter(o=>o.mine&&o.status===7);
+return`<h2>What’s good, Brooklyn?</h2><p class="mut">Serving ${S.D.nb} · Next pickup slot: today 6 – 8 PM</p>
+<button class="btn y" data-a="tab" data-v="svc">Schedule a Pickup</button>
+${act?`<div class="card"><div class="row"><h3>Active order ${act.id}</h3>${pill(act)}</div><p class="mut">${svn(act)}</p><button class="btn sm" data-a="track" data-v="${act.id}">Track order</button></div>`:`<div class="empty">No active orders. Schedule a pickup to get started.</div>`}
+<div class="hero" style="padding:16px"><b>First wash free delivery</b><br><span style="color:#c9d4e4">Use code BORO10 for 10% off at checkout.</span></div>
+<h3 style="margin:14px 0 8px">Popular services</h3><div class="g g2">${[`wdf`,`bed`].map(k=>`<button class="opt" data-a="pick" data-v="${k}"><b>${SV[k].n}</b><br><span class="mut">${k===`bed`?`from `+m(S.pr.bed)+`/item`:m(S.pr[k])+`/lb`}</span></button>`).join(``)}</div>
+<h3 style="margin:14px 0 8px">Previous orders</h3>${prev.length?prev.map(o=>ordCard(o,`<button class="btn sm y" data-a="reorder" data-v="${o.id}">Reorder</button>`)).join(``):`<div class="empty">Nothing here yet.</div>`}`}
+function svc(){const D=S.D;return`<h2>Pick a service</h2><p class="mut">Minimum order ${m(S.min)}</p><div class="g">${Object.keys(SV).map(k=>{const s=SV[k];return`<button class="opt ${D.svc===k?`on`:``} ${s.soon?`off`:``}" data-a="${s.soon?`soon`:`pick`}" data-v="${k}"><div class="row"><b>${s.n}</b>${s.soon?`<span class="pill g">Coming soon</span>`:`<b>${k===`bed`?`from `+m(S.pr.bed)+`/item`:m(S.pr[k])+`/lb`}</b>`}</div><span class="mut">${s.d}</span></button>`}).join(``)}</div>
+<label>Estimated ${SV[D.svc].u===`lb`?`weight (lbs)`:`items`}</label><input type="number" min="1" value="${D.qty}" data-f="D.qty" data-n="1"><button class="btn" data-a="tab" data-v="sched">Continue to scheduling</button>`}
+function sched(){const D=S.D;return`<h2>Schedule pickup</h2><label>Neighborhood</label><select data-f="D.nb">${NB.filter(n=>S.areas.includes(n)).map(n=>`<option ${n===D.nb?`selected`:``}>${n}</option>`).join(``)}</select>
+<div class="g g2"><div><label>Pickup address</label><input value="${D.addr}" data-f="D.addr"></div><div><label>Apt</label><input value="${D.apt}" data-f="D.apt"></div></div>
+<label>Pickup date</label><div class="g g3">${[0,1,2].map(n=>`<button class="opt ${D.date===day(n)?`on`:``}" data-a="date" data-v="${day(n)}">${fd(day(n))}</button>`).join(``)}</div>
+<label>Time window</label><div class="g g2">${[`8 – 10 AM`,`10 AM – 12 PM`,`12 – 2 PM`,`6 – 8 PM`].map(w=>`<button class="opt ${D.win===w?`on`:``}" data-a="win" data-v="${w}">${w}</button>`).join(``)}</div>
+<label>Special instructions</label><textarea rows="2" data-f="D.note">${D.note}</textarea>
+<label style="display:flex;gap:8px;align-items:center"><input type="checkbox" style="width:auto" ${D.cl?`checked`:``} data-f="D.cl" data-b="1"> Contactless pickup</label>
+<button class="btn" data-a="tab" data-v="checkout" ${D.addr?``:`disabled`}>Review order</button>`}
+function checkout(){const D=S.D,p=price(D);return`<h2>Order summary</h2><div class="card"><b>${SV[D.svc].n}</b><div class="mut">Est. ${D.qty} ${SV[D.svc].u}s<br>Pickup &amp; delivery: ${D.addr} ${D.apt}, ${D.nb}<br>${fd(D.date)}, ${D.win}${D.cl?`<br>Contactless`:``}</div></div>
+<div class="card g"><div class="row"><span>Laundry${p.b>S.pr[D.svc]*D.qty?` (minimum applied)`:``}</span><b>${m(p.b)}</b></div><div class="row"><span>Delivery fee</span><b>${m(p.fee)}</b></div>${D.pok?`<div class="row"><span>BORO10</span><b>-${m(p.disc)}</b></div>`:``}<div class="row"><span class="big">Estimated total</span><span class="big">${m(p.t)}</span></div></div>
+<div class="row"><input placeholder="Promo code" value="${D.promo}" data-f="D.promo"><button class="btn sm" data-a="promo">Apply</button></div>
+<p class="mut">Simulated checkout with the mock card ending 4417. No real payment.</p><button class="btn y" data-a="place">Place Order</button>`}
+function track(){const o=O(S.tracked)||S.orders.find(o=>o.mine&&o.status<7);if(!o)return`<div class="empty">No order to track yet.<br><button class="btn sm y" data-a="tab" data-v="svc">Schedule a pickup</button></div>`;const d=DR.find(x=>x.id===o.drv);
+return`<div class="row"><h2>${o.id}</h2>${pill(o)}</div>${map(o)}<div class="card" style="margin-top:12px"><div class="row"><div><b>${d?d.n:`Driver pending`}</b><div class="mut">${d?d.car:``}</div></div><button class="btn sm" data-a="call">Contact driver</button></div><p class="mut" style="margin:8px 0 0">Estimated delivery: ${o.status===7?`Delivered`:fd(o.date)+`, 6 – 8 PM`}</p></div><div class="card">${tl(o)}</div>${o.status<7?`<button class="btn o" data-a="adv" data-v="${o.id}">Demo: advance status</button>`:`<div class="empty">Delivered. Fresh and folded.</div>`}`}
+function hist(){const l=S.orders.filter(o=>o.mine);return`<h2>Your orders</h2>${l.length?l.map(o=>ordCard(o,`<button class="btn sm" data-a="track" data-v="${o.id}">Track</button> <button class="btn sm y" data-a="reorder" data-v="${o.id}">Reorder</button>`)).join(``):`<div class="empty">No orders yet.</div>`}`}
+function prof(){const p=S.prof;return`<h2>Dani Rivera</h2><p class="mut">(917) 555-0188</p><div class="card"><b>Saved addresses</b><div class="mut">Home: 412 Nostrand Ave 3B, Bed-Stuy<br>Work: 1 MetroTech Center, Downtown Brooklyn</div></div><div class="card"><b>Payment methods</b><div class="mut">Visa ending 4417 (mock)<br>Apple Pay (mock)</div></div>
+<div class="card"><label style="display:flex;gap:8px;align-items:center;margin:0"><input type="checkbox" style="width:auto" ${p.notif?`checked`:``} data-f="prof.notif" data-b="1"> Order notifications</label><label>Subscription</label><select data-f="prof.plan">${[`None`,`Weekly pickup`,`Every 2 weeks`].map(x=>`<option ${x===p.plan?`selected`:``}>${x}</option>`).join(``)}</select></div><button class="btn o" data-a="help">Help and support</button>`}
+function customer(){if(!S.welcomed)return`<div class="wrap">${welcome()}</div>`;const T={home,svc,sched,checkout,track,hist,prof};const nav=[[`home`,`Home`],[`svc`,`New`],[`track`,`Track`],[`hist`,`Orders`],[`prof`,`Profile`]];
+return`<div class="wrap">${T[S.tab]()}</div><div class="nav"><div>${nav.map(n=>`<button class="${S.tab===n[0]?`on`:``}" data-a="tab" data-v="${n[0]}">${n[1]}</button>`).join(``)}</div></div>`}
+function driver(){const me=DR[0],mine=S.orders.filter(o=>o.drv===me.id);const pk=mine.filter(o=>o.status<3),dl=mine.filter(o=>(o.status===5&&o.ready)||o.status===6),done=mine.filter(o=>o.status>=2).length;
+return`<div class="wrap"><h2>${me.n}</h2><div class="g g2"><div class="card"><div class="big">${done}</div><span class="mut">Completed today</span></div><div class="card"><div class="big">${m(done*8.5)}</div><span class="mut">Est. earnings</span></div></div>
+<h3>Pickups (${pk.length})</h3>${pk.length?pk.map(o=>`<div class="card"><b>${o.id}, ${o.cust}</b><div class="mut">${o.addr}, ${o.nb}<br>${o.win}</div><div class="g g2"><button class="btn sm" data-a="nav">Navigate</button><button class="btn sm" data-a="proof" data-v="${o.id}">${o.proof?`Proof attached`:`Attach proof photo`}</button></div>${o.status<2?`<button class="btn y" data-a="setst" data-v="${o.id}:2">Confirm pickup</button>`:`<button class="btn y" data-a="setst" data-v="${o.id}:3">Drop at laundromat</button>`}</div>`).join(``):`<div class="empty">No pickups assigned.</div>`}
+<h3>Deliveries (${dl.length})</h3>${dl.length?dl.map(o=>`<div class="card"><b>${o.id}, ${o.cust}</b><div class="mut">${o.addr}, ${o.nb}</div><button class="btn sm" data-a="nav">Navigate</button>${o.status===5?`<button class="btn y" data-a="setst" data-v="${o.id}:6">Start delivery</button>`:`<button class="btn y" data-a="setst" data-v="${o.id}:7">Confirm delivery</button>`}</div>`).join(``):`<div class="empty">Deliveries appear when a laundromat marks an order ready.</div>`}</div>`}
+function laundro(){const lm=LM[0],l=S.orders.filter(o=>o.lm===lm.id);const inc=l.filter(o=>o.status>=2&&o.status<=5&&!o.ready),today=l.filter(o=>o.status>=3).length;
+const act=o=>o.status===2?`<span class="pill g">Driver en route</span>`:o.status===3?`<button class="btn y" data-a="setst" data-v="${o.id}:4">Mark received, start washing</button>`:o.status===4?`<button class="btn y" data-a="setst" data-v="${o.id}:5">Drying done, start folding</button>`:`<button class="btn y" data-a="ready" data-v="${o.id}">Folding done, ready for delivery</button>`;
+return`<div class="wrap"><h2>${lm.n}</h2><div class="g g2"><div class="card"><div class="big">${today}</div><span class="mut">Orders today</span></div><div class="card"><div class="big">${m(l.reduce((a,o)=>a+o.total*.55,0))}</div><span class="mut">Weekly earnings</span></div></div><h3>Incoming &amp; in progress</h3>${inc.length?inc.map(o=>`<div class="card"><div class="row"><b>${o.id}</b>${pill(o)}</div><div class="mut">${svn(o)}</div>${act(o)}</div>`).join(``):`<div class="empty">No orders in the shop right now.</div>`}</div>`}
+function admin(){const os=S.orders,rev=os.reduce((a,o)=>a+o.total,0),sub=S.sub;
+const k=(n,v)=>`<div class="card"><div class="big">${v}</div><span class="mut">${n}</span></div>`;let b=``;
+if(sub===`overview`)b=`<div class="g g3">${k(`Total orders`,os.length)}${k(`Revenue`,m(rev))}${k(`Est. operating profit`,m(rev*.28))}${k(`Active drivers`,DR.length)}${k(`Active customers`,CU.length)}${k(`Laundry partners`,LM.length)}${k(`Awaiting pickup`,os.filter(o=>o.status<2).length)}${k(`Processing`,os.filter(o=>o.status>=2&&o.status<=5&&!(o.status===5&&o.ready)).length)}${k(`Awaiting delivery`,os.filter(o=>(o.status===5&&o.ready)||o.status===6).length)}</div><h3>Transactions</h3><div class="card tw"><table>${os.map(o=>`<tr><td>${o.id}</td><td>${o.cust}</td><td>${m(o.total)}</td></tr>`).join(``)}</table></div>`;
+if(sub===`orders`)b=`<div class="card tw"><table><tr><th>Order</th><th>Customer</th><th>Status</th><th>Driver</th><th>Laundromat</th></tr>${os.map(o=>`<tr><td>${o.id}</td><td>${o.cust}</td><td><select data-o="${o.id}" data-k="status">${ST.map((s,i)=>`<option value="${i}" ${i===o.status?`selected`:``}>${s}</option>`).join(``)}</select></td><td><select data-o="${o.id}" data-k="drv">${DR.map(d=>`<option value="${d.id}" ${d.id===o.drv?`selected`:``}>${d.n}</option>`).join(``)}</select></td><td><select data-o="${o.id}" data-k="lm">${LM.map(d=>`<option value="${d.id}" ${d.id===o.lm?`selected`:``}>${d.n}</option>`).join(``)}</select></td></tr>`).join(``)}</table></div>`;
+if(sub===`pricing`)b=`<div class="card"><div class="g g2">${[[`pr.wdf`,`Wash, Dry & Fold $/lb`],[`pr.del`,`Delicate $/lb`],[`pr.bed`,`Bedding $/item`],[`min`,`Minimum order $`],[`fee`,`Delivery fee $`]].map(f=>`<div><label>${f[1]}</label><input type="number" step="0.01" data-n="1" data-f="${f[0]}" value="${f[0].includes(`.`)?S.pr[f[0].split(`.`)[1]]:S[f[0]]}"></div>`).join(``)}</div></div><h3>Service areas</h3><div class="g g3" style="margin-top:8px">${NB.map(n=>`<button class="opt ${S.areas.includes(n)?`on`:``}" data-a="area" data-v="${n}">${n}</button>`).join(``)}</div>`;
+if(sub===`people`)b=`<div class="g g3"><div class="card"><h3>Customers</h3>${CU.map(c=>`<div class="mut">${c}</div>`).join(``)}</div><div class="card"><h3>Drivers</h3>${DR.map(c=>`<div class="mut">${c.n}, ${c.ph}</div>`).join(``)}</div><div class="card"><h3>Laundromats</h3>${LM.map(c=>`<div class="mut">${c.n}</div>`).join(``)}</div></div>`;
+return`<div class="wrap wide"><h2 style="margin-bottom:10px">Admin dashboard</h2><div class="tabs">${[`overview`,`orders`,`pricing`,`people`].map(t=>`<button class="btn sm ${sub===t?`y`:`o`}" data-a="sub" data-v="${t}">${t[0].toUpperCase()+t.slice(1)}</button>`).join(``)}</div>${b}</div>`}
+function render(){const R={customer,driver,laundromat:laundro,admin};const ae=document.activeElement;
+document.getElementById(`app`).innerHTML=`<div class="top">${[[`customer`,`Customer`],[`driver`,`Driver`],[`laundromat`,`Laundromat`],[`admin`,`Admin`]].map(r=>`<button class="${S.role===r[0]?`on`:``}" data-a="role" data-v="${r[0]}">${r[1]}</button>`).join(``)}<button data-a="reset">Reset demo</button></div>${R[S.role]()}${S.toast?`<div class="toast" role="status">${S.toast}</div>`:``}`;save()}
+function setp(path,v){const p=path.split(`.`);let t=S;while(p.length>1)t=t[p.shift()];t[p[0]]=v}
+document.addEventListener(`click`,e=>{const t=e.target.closest(`[data-a]`);if(!t)return;const a=t.dataset.a,v=t.dataset.v;
+if(a===`role`){S.role=v;render()}else if(a===`reset`){S=seed();render()}else if(a===`start`){S.welcomed=1;render()}
+else if(a===`tab`){S.tab=v;render();scrollTo(0,0)}else if(a===`sub`){S.sub=v;render()}
+else if(a===`pick`){S.D.svc=v;S.tab=`svc`;render()}else if(a===`soon`)toast(`Dry cleaning is coming soon`)
+else if(a===`date`){S.D.date=v;render()}else if(a===`win`){S.D.win=v;render()}
+else if(a===`promo`){S.D.pok=S.D.promo.trim().toUpperCase()===`BORO10`?1:0;toast(S.D.pok?`BORO10 applied`:`Code not valid`)}
+else if(a===`place`){const D=S.D,p=price(D),n=`BW-`+(1046+S.orders.length-5);S.orders.unshift({id:n,cust:`Dani Rivera`,svc:D.svc,qty:D.qty,addr:D.addr+` `+D.apt,nb:D.nb,date:D.date,win:D.win,note:D.note,total:p.t,status:0,drv:`d1`,lm:`l1`,ready:0,mine:1});S.tracked=n;S.tab=`track`;S.D.pok=0;S.D.promo=``;toast(`Order ${n} placed`)}
+else if(a===`track`){S.tracked=v;S.tab=`track`;render()}else if(a===`adv`){const o=O(v);if(o.status<7){o.status++;if(o.status===5)o.ready=1}render()}
+else if(a===`reorder`){const o=O(v);Object.assign(S.D,{svc:o.svc,qty:o.qty,addr:o.addr.replace(/ \w+$/,``),date:day(1)});S.tab=`sched`;toast(`Order details copied. Pick a time.`)}
+else if(a===`setst`){const[i,s]=v.split(`:`);const o=O(i);o.status=+s;if(o.status===3)o.ready=0;render();toast(ST[o.status])}
+else if(a===`ready`){const o=O(v);o.ready=1;toast(`${o.id} is ready for delivery`)}
+else if(a===`proof`){O(v).proof=1;toast(`Proof photo attached (placeholder)`)}
+else if(a===`nav`)toast(`Opening turn-by-turn navigation (simulated)`)
+else if(a===`call`)toast(`Calling driver (simulated)`);else if(a===`help`)toast(`Support will text you within 10 minutes`);
+else if(a===`area`){S.areas=S.areas.includes(v)?S.areas.filter(x=>x!==v):S.areas.concat(v);if(!S.areas.includes(S.D.nb))S.D.nb=S.areas[0]||NB[0];render()}});
+document.addEventListener(`change`,e=>{const t=e.target;if(t.dataset.o){const o=O(t.dataset.o),k=t.dataset.k;o[k]=k===`status`?+t.value:t.value;if(k===`status`)o.ready=o.status>=6?1:0;toast(`${o.id} updated`);return}
+if(t.dataset.f){let v=t.dataset.b?t.checked?1:0:t.dataset.n?Math.max(0,+t.value||0):t.value;setp(t.dataset.f,v);render()}});
+render();
+</script></body></html>
